@@ -223,17 +223,6 @@ svg {
   backdrop-filter: blur(8px);
 }
 
-.image-credit {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  padding: 0.25rem 0.5rem;
-  color: rgba(255, 255, 255, 0.9);
-  border-radius: 0.4rem;
-  background: rgba(15, 23, 42, 0.6);
-  font-size: 0.68rem;
-}
-
 .property-visual {
   position: relative;
   min-height: 320px;
@@ -267,22 +256,6 @@ svg {
 .property-visual__overlay strong {
   font-size: 1.45rem;
   line-height: 1.25;
-}
-
-.property-visual figcaption {
-  position: absolute;
-  top: 0.7rem;
-  right: 0.7rem;
-  padding: 0.25rem 0.5rem;
-  color: rgba(255, 255, 255, 0.88);
-  border-radius: 0.4rem;
-  background: rgba(15, 23, 42, 0.6);
-  font-size: 0.68rem;
-}
-
-.property-visual figcaption a {
-  text-decoration: underline;
-  text-underline-offset: 2px;
 }
 
 .hero-card {
