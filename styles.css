@@ -126,27 +126,30 @@ svg {
 
 .brand {
   display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  align-items: flex-start;
 }
 
-.brand-mark {
+.brand-lockup {
   display: flex;
   flex-direction: column;
-  line-height: 1.05;
+  align-items: flex-start;
+  gap: 0.15rem;
 }
 
-.brand-mark__top {
-  font-size: 0.9rem;
-  color: var(--primary);
+.brand-logo {
+  display: block;
+  width: 180px;
+  max-width: 42vw;
+  height: auto;
 }
 
-.brand-mark__bottom {
-  font-size: 0.7rem;
-  color: var(--muted);
+.brand-mark__license {
+  font-size: 0.58rem;
+  color: var(--gold-dark);
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .nav-links {
@@ -928,8 +931,16 @@ textarea {
 }
 
 .footer-brand {
-  color: #fff;
   margin-bottom: 1rem;
+  background: #fff;
+  border-radius: 6px;
+  padding: 0.45rem 0.6rem;
+  width: fit-content;
+}
+
+.brand-logo--footer {
+  width: 190px;
+  max-width: 100%;
 }
 
 .site-footer ul {

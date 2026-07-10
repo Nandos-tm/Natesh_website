@@ -18,9 +18,9 @@
     <header class="site-header">
       <div class="container nav-bar">
         <a class="brand" href="index.html">
-          <div class="brand-mark">
-            <span class="brand-mark__top">ALL ROADS</span>
-            <span class="brand-mark__bottom">Wholesale Fund</span>
+          <div class="brand-lockup">
+            <img class="brand-logo" src="assets/images/Logo.png" alt="All Roads Wholesale Fund Limited" />
+            <span class="brand-mark__license">AFSL 305740</span>
           </div>
         </a>
         <nav class="nav-links" aria-label="Primary navigation">
@@ -161,35 +161,37 @@
               </div>
             </div>
           </div>
-          <form class="contact-form" action="registered.html" method="get">
+          <form class="contact-form" action="https://formspree.io/f/xwvdglad" method="POST">
+            <input type="hidden" name="_subject" value="Advisor enquiry - All Roads Wholesale Fund" />
+            <input type="hidden" name="_next" value="registered.html" />
             <div class="form-row">
               <label>
                 <span>Full name</span>
-                <input type="text" placeholder="Jordan Lee" />
+                <input type="text" name="full_name" placeholder="Jordan Lee" />
               </label>
               <label>
                 <span>Licensee / AFSL</span>
-                <input type="text" placeholder="Example Advisors Pty Ltd" />
+                <input type="text" name="licensee_afsl" placeholder="Example Advisors Pty Ltd" />
               </label>
             </div>
             <label>
               <span>Email</span>
-              <input type="email" placeholder="jordan@email.com" required />
+              <input type="email" name="email" placeholder="jordan@email.com" required />
             </label>
             <label>
               <span>Phone</span>
-              <input type="tel" placeholder="0400 000 000" />
+              <input type="tel" name="phone" placeholder="0400 000 000" />
             </label>
             <label>
               <span>I am a licensed financial advisor</span>
-              <select>
+              <select name="licensed_financial_advisor">
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label>
               <span>Message</span>
-              <textarea rows="5" placeholder="Tell us a little about your enquiry"></textarea>
+              <textarea rows="5" name="message" placeholder="Tell us a little about your enquiry"></textarea>
             </label>
             <button class="button" type="submit">Submit enquiry</button>
           </form>
@@ -211,10 +213,7 @@
       <div class="container footer-grid">
         <div>
           <a class="brand footer-brand" href="index.html">
-            <div class="brand-mark">
-              <span class="brand-mark__top">ALL ROADS</span>
-              <span class="brand-mark__bottom">Wholesale Fund</span>
-            </div>
+            <img class="brand-logo brand-logo--footer" src="assets/images/Logo.png" alt="All Roads Wholesale Fund Limited" />
           </a>
           <p>Property-backed income for wholesale investors, secured by registered first mortgages over Australian property.</p>
         </div>

@@ -18,9 +18,9 @@
     <header class="site-header">
       <div class="container nav-bar">
         <a class="brand" href="index.html">
-          <div class="brand-mark">
-            <span class="brand-mark__top">ALL ROADS</span>
-            <span class="brand-mark__bottom">Wholesale Fund</span>
+          <div class="brand-lockup">
+            <img class="brand-logo" src="assets/images/Logo.png" alt="All Roads Wholesale Fund Limited" />
+            <span class="brand-mark__license">AFSL 305740</span>
           </div>
         </a>
         <nav class="nav-links" aria-label="Primary navigation">
@@ -266,31 +266,32 @@
               </div>
             </div>
           </div>
-          <form class="contact-form">
+          <form class="contact-form" action="https://formspree.io/f/xwvdglad" method="POST">
+            <input type="hidden" name="_subject" value="Finance enquiry - All Roads Wholesale Fund" />
             <div class="form-row">
               <label>
                 <span>Full name</span>
-                <input type="text" placeholder="Alex Carter" />
+                <input type="text" name="full_name" placeholder="Alex Carter" />
               </label>
               <label>
                 <span>Company</span>
-                <input type="text" placeholder="AC Developments" />
+                <input type="text" name="company" placeholder="AC Developments" />
               </label>
             </div>
             <div class="form-row">
               <label>
                 <span>Email</span>
-                <input type="email" placeholder="alex@email.com" required />
+                <input type="email" name="email" placeholder="alex@email.com" required />
               </label>
               <label>
                 <span>Phone</span>
-                <input type="tel" placeholder="0400 000 000" />
+                <input type="tel" name="phone" placeholder="0400 000 000" />
               </label>
             </div>
             <div class="form-row">
               <label>
                 <span>Project location</span>
-                <select>
+                <select name="project_location">
                   <option>Select…</option>
                   <option>QLD</option>
                   <option>NSW</option>
@@ -304,12 +305,12 @@
               </label>
               <label>
                 <span>Loan amount (AUD)</span>
-                <input type="text" placeholder="e.g. 2,500,000" />
+                <input type="text" name="loan_amount_aud" placeholder="e.g. 2,500,000" />
               </label>
             </div>
             <label>
               <span>Project description</span>
-              <textarea rows="5" placeholder="Project type, stage, value and what you're seeking"></textarea>
+              <textarea rows="5" name="project_description" placeholder="Project type, stage, value and what you're seeking"></textarea>
             </label>
             <button class="button" type="submit">Submit enquiry</button>
           </form>
@@ -329,10 +330,7 @@
       <div class="container footer-grid">
         <div>
           <a class="brand footer-brand" href="index.html">
-            <div class="brand-mark">
-              <span class="brand-mark__top">ALL ROADS</span>
-              <span class="brand-mark__bottom">Wholesale Fund</span>
-            </div>
+            <img class="brand-logo brand-logo--footer" src="assets/images/Logo.png" alt="All Roads Wholesale Fund Limited" />
           </a>
           <p>Tailored property development finance secured by registered first mortgages across Australia.</p>
         </div>
