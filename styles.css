@@ -1,14 +1,65 @@
 :root {
-  --bg: #f4f2eb;
+  --bg: #eef4fb;
   --surface: #ffffff;
-  --surface-muted: #f8f7f2;
-  --text: #0f172a;
-  --muted: #5c6470;
-  --primary: #113a38;
-  --primary-strong: #0b2c2a;
-  --accent: #f6c24b;
-  --border: #e5e2d8;
-  --shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  --surface-muted: #f5f8fc;
+  --text: #07152f;
+  --muted: #526179;
+  --primary: #0b2d5c;
+  --primary-strong: #061a38;
+  --accent: #d9a441;
+  --accent-strong: #b9821f;
+  --border: #d7e2ef;
+  --shadow: 0 22px 48px rgba(7, 21, 47, 0.12);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float-card {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes sheen {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(120%);
+  }
 }
 
 * {
@@ -61,7 +112,8 @@ svg {
   position: sticky;
   top: 0;
   z-index: 10;
-  border-bottom: 1px solid rgba(17, 58, 56, 0.08);
+  border-bottom: 1px solid rgba(11, 45, 92, 0.1);
+  animation: fade-in 0.5s ease both;
 }
 
 .nav-bar {
@@ -103,6 +155,34 @@ svg {
   color: var(--muted);
 }
 
+.nav-links a,
+.page-nav__inner a,
+.text-link {
+  position: relative;
+}
+
+.nav-links a::after,
+.page-nav__inner a::after,
+.text-link::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.25rem;
+  left: 0;
+  height: 2px;
+  content: "";
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.25s ease;
+}
+
+.nav-links a:hover::after,
+.page-nav__inner a:hover::after,
+.text-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -113,11 +193,11 @@ svg {
   border-radius: 999px;
   font-weight: 600;
   border: 1px solid transparent;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow);
 }
 
@@ -135,7 +215,7 @@ svg {
 
 .hero {
   padding: 5rem 0 3.5rem;
-  background: linear-gradient(135deg, #fffffe 0%, var(--bg) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #e7f0fb 58%, #f8efd9 100%);
 }
 
 .hero-grid {
@@ -159,6 +239,10 @@ svg {
   font-size: clamp(2rem, 3vw, 3rem);
   line-height: 1.08;
   margin: 0 0 1rem;
+}
+
+.hero-copy {
+  animation: fade-up 0.75s ease both;
 }
 
 .hero-text,
@@ -206,6 +290,7 @@ svg {
   overflow: hidden;
   border-radius: 2rem;
   box-shadow: var(--shadow);
+  animation: scale-in 0.85s 0.12s ease both;
 }
 
 .hero-visual__image {
@@ -219,8 +304,9 @@ svg {
 .hero-visual--photo .hero-card {
   position: relative;
   width: 100%;
-  background: rgba(11, 44, 42, 0.9);
+  background: rgba(6, 26, 56, 0.92);
   backdrop-filter: blur(8px);
+  animation: float-card 6s ease-in-out infinite;
 }
 
 .property-visual {
@@ -249,7 +335,7 @@ svg {
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 1rem;
-  background: rgba(11, 44, 42, 0.9);
+  background: rgba(6, 26, 56, 0.9);
   backdrop-filter: blur(8px);
 }
 
@@ -260,11 +346,12 @@ svg {
 
 .hero-card {
   width: min(100%, 420px);
-  background: linear-gradient(160deg, var(--primary) 0%, #1d4f4c 100%);
+  background: linear-gradient(160deg, var(--primary-strong) 0%, #164f9f 100%);
   color: white;
   border-radius: 2rem;
   padding: 1.5rem;
   box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
 .hero-card__top {
@@ -286,6 +373,12 @@ svg {
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hero-card__stat:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 .hero-card__stat strong {
@@ -322,6 +415,7 @@ svg {
 
 .section {
   padding: 4.5rem 0;
+  animation: fade-up 0.7s ease both;
 }
 
 .section--alt {
@@ -345,12 +439,103 @@ svg {
   gap: 1rem;
 }
 
+.stat-grid > div,
+.card-grid > *,
+.feature-list > *,
+.choice-grid > *,
+.fund-detail-grid > *,
+.people-grid > *,
+.partners-grid > *,
+.criteria-grid > *,
+.terms-grid > *,
+.document-grid > *,
+.steps-grid > *,
+.faq-list > * {
+  animation: fade-up 0.65s ease both;
+}
+
+.stat-grid > :nth-child(2),
+.card-grid > :nth-child(2),
+.feature-list > :nth-child(2),
+.choice-grid > :nth-child(2),
+.fund-detail-grid > :nth-child(2),
+.people-grid > :nth-child(2),
+.partners-grid > :nth-child(2),
+.criteria-grid > :nth-child(2),
+.terms-grid > :nth-child(2),
+.document-grid > :nth-child(2),
+.steps-grid > :nth-child(2),
+.faq-list > :nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.stat-grid > :nth-child(3),
+.card-grid > :nth-child(3),
+.feature-list > :nth-child(3),
+.choice-grid > :nth-child(3),
+.fund-detail-grid > :nth-child(3),
+.people-grid > :nth-child(3),
+.partners-grid > :nth-child(3),
+.criteria-grid > :nth-child(3),
+.terms-grid > :nth-child(3),
+.document-grid > :nth-child(3),
+.steps-grid > :nth-child(3),
+.faq-list > :nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.stat-grid > :nth-child(n + 4),
+.feature-list > :nth-child(n + 4),
+.choice-grid > :nth-child(n + 4),
+.fund-detail-grid > :nth-child(n + 4),
+.criteria-grid > :nth-child(n + 4),
+.terms-grid > :nth-child(n + 4),
+.document-grid > :nth-child(n + 4),
+.steps-grid > :nth-child(n + 4),
+.faq-list > :nth-child(n + 4) {
+  animation-delay: 0.24s;
+}
+
 .info-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 1.2rem;
   padding: 1.4rem;
   box-shadow: var(--shadow);
+}
+
+.info-card,
+.feature-list article,
+.choice-grid article,
+.fund-card,
+.fund-detail-grid article,
+.quote-card,
+.person-card,
+.partner-card,
+.criteria-card,
+.terms-grid article,
+.document-card,
+.faq-item,
+.step-card {
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.info-card:hover,
+.feature-list article:hover,
+.choice-grid article:hover,
+.fund-card:hover,
+.fund-detail-grid article:hover,
+.quote-card:hover,
+.person-card:hover,
+.partner-card:hover,
+.criteria-card:hover,
+.terms-grid article:hover,
+.document-card:hover,
+.faq-item:hover,
+.step-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(11, 45, 92, 0.22);
+  box-shadow: 0 24px 52px rgba(7, 21, 47, 0.16);
 }
 
 .info-card h3,
@@ -373,7 +558,16 @@ svg {
   gap: 1rem;
 }
 
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
 .feature-list article,
+.choice-grid article,
+.fund-card,
+.fund-detail-grid article,
 .quote-card,
 .person-card,
 .partner-card,
@@ -385,6 +579,29 @@ svg {
   border-radius: 1.4rem;
   padding: 1.4rem;
   box-shadow: var(--shadow);
+}
+
+.choice-grid span {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.9rem;
+  border-radius: 50%;
+  background: rgba(11, 45, 92, 0.1);
+  color: var(--primary);
+  font-weight: 700;
+  transition: transform 0.22s ease, background 0.22s ease;
+}
+
+.choice-grid article:hover span {
+  transform: rotate(-4deg) scale(1.06);
+  background: rgba(217, 164, 65, 0.34);
+}
+
+.choice-grid h3 {
+  margin-top: 0;
 }
 
 .check-list {
@@ -405,7 +622,7 @@ svg {
   min-height: 260px;
   display: grid;
   align-content: end;
-  background: linear-gradient(180deg, var(--accent) 0%, #f3d483 100%);
+  background: linear-gradient(180deg, var(--accent) 0%, #f2d189 100%);
 }
 
 .quote-card__badge {
@@ -414,10 +631,15 @@ svg {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: rgba(17, 58, 56, 0.12);
+  background: rgba(11, 45, 92, 0.14);
   font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  transition: transform 0.25s ease;
+}
+
+.quote-card:hover .quote-card__badge {
+  transform: rotate(-8deg) scale(1.05);
 }
 
 .section-heading {
@@ -443,6 +665,7 @@ svg {
   place-items: center;
   font-weight: 700;
   margin-bottom: 1rem;
+  transition: transform 0.25s ease;
 }
 
 .person-card__photo {
@@ -453,7 +676,13 @@ svg {
   border-radius: 50%;
   object-fit: cover;
   object-position: center top;
-  box-shadow: 0 0 0 1px var(--border), 0 10px 24px rgba(15, 23, 42, 0.14);
+  box-shadow: 0 0 0 1px var(--border), 0 10px 24px rgba(7, 21, 47, 0.16);
+  transition: transform 0.25s ease;
+}
+
+.person-card:hover .person-card__photo,
+.person-card:hover .person-card__initials {
+  transform: scale(1.05);
 }
 
 .person-card__title {
@@ -463,6 +692,101 @@ svg {
 
 .partners-grid {
   grid-template-columns: repeat(3, 1fr);
+}
+
+.mortgage-fund-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.fund-card {
+  display: grid;
+  gap: 1.4rem;
+  align-content: space-between;
+}
+
+.fund-card--featured {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--primary-strong) 0%, #0b2d5c 48%, #1b65b9 100%);
+  color: #fff;
+}
+
+.fund-card--featured::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  animation: sheen 7s ease-in-out infinite;
+}
+
+.fund-card--featured > * {
+  position: relative;
+}
+
+.fund-card--featured p,
+.fund-card--featured span {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.fund-card--featured .button {
+  width: fit-content;
+  background: var(--accent);
+  color: var(--primary-strong);
+}
+
+.fund-card__label {
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.fund-card h3 {
+  margin: 0 0 0.7rem;
+  font-size: 1.55rem;
+}
+
+.fund-card__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+}
+
+.fund-card__stats div {
+  padding: 0.85rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.12);
+  transition: transform 0.22s ease, background 0.22s ease;
+}
+
+.fund-card__stats div:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.fund-card__stats strong {
+  display: block;
+  font-size: 1.35rem;
+}
+
+.fund-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.fund-detail-grid strong {
+  display: block;
+  color: var(--primary);
+  margin-bottom: 0.35rem;
+}
+
+.fund-detail-grid span {
+  color: var(--muted);
 }
 
 .partner-card span {
@@ -478,7 +802,23 @@ svg {
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
-  background: linear-gradient(135deg, #eef4f3 0%, #f8f3e0 100%);
+  background: linear-gradient(135deg, #e7f0fb 0%, #ffffff 48%, #f7e7bd 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.55), transparent 80%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+
+.cta-banner:hover::after {
+  transform: translateX(120%);
 }
 
 .contact-list {
@@ -530,7 +870,7 @@ textarea {
 
 .site-footer {
   background: var(--primary);
-  color: #f8f7f2;
+  color: #f5f8fc;
   padding: 3rem 0 1.5rem;
 }
 
@@ -554,7 +894,7 @@ textarea {
 }
 
 .site-footer a {
-  color: #e6e2d8;
+  color: #dbe8f6;
 }
 
 .footer-bottom {
@@ -564,13 +904,13 @@ textarea {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  color: #d8d2c6;
+  color: #c6d8eb;
   font-size: 0.95rem;
 }
 
 .page-hero {
   padding: 4rem 0 2.5rem;
-  background: linear-gradient(135deg, #fff 0%, #f2efe8 100%);
+  background: linear-gradient(135deg, #fff 0%, #e7f0fb 68%, #f8efd9 100%);
 }
 
 .page-hero__text {
@@ -610,7 +950,7 @@ textarea {
 }
 
 .highlight-card {
-  background: linear-gradient(135deg, var(--primary) 0%, #1e4f4c 100%);
+  background: linear-gradient(135deg, var(--primary-strong) 0%, #1b65b9 100%);
   color: #fff;
   border-radius: 1.5rem;
   padding: 2rem;
@@ -621,7 +961,7 @@ textarea {
 }
 
 .highlight-card--accent {
-  background: linear-gradient(135deg, #05504e 0%, #2a7872 100%);
+  background: linear-gradient(135deg, #0d3f83 0%, #d9a441 100%);
 }
 
 .highlight-card__value {
@@ -729,7 +1069,10 @@ textarea {
     align-items: flex-start;
   }
 
-  .feature-list {
+  .feature-list,
+  .choice-grid,
+  .mortgage-fund-layout,
+  .fund-detail-grid {
     grid-template-columns: 1fr;
   }
 
@@ -741,6 +1084,10 @@ textarea {
   }
 
   .split-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .fund-card__stats {
     grid-template-columns: 1fr;
   }
 }
@@ -762,5 +1109,33 @@ textarea {
   .footer-bottom {
     flex-direction: column;
     gap: 0.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .button:hover,
+  .info-card:hover,
+  .feature-list article:hover,
+  .choice-grid article:hover,
+  .fund-card:hover,
+  .fund-detail-grid article:hover,
+  .quote-card:hover,
+  .person-card:hover,
+  .partner-card:hover,
+  .criteria-card:hover,
+  .terms-grid article:hover,
+  .document-card:hover,
+  .faq-item:hover,
+  .step-card:hover {
+    transform: none;
   }
 }
