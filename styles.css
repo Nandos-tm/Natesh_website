@@ -1067,6 +1067,17 @@ textarea {
   color: var(--muted);
 }
 
+.document-access__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.document-card--protected {
+  border-color: rgba(217, 164, 65, 0.45);
+}
+
 .steps-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
