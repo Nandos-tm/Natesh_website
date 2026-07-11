@@ -931,11 +931,19 @@ textarea {
 }
 
 .footer-brand {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
   margin-bottom: 1rem;
   background: #fff;
   border-radius: 6px;
   padding: 0.45rem 0.6rem;
   width: fit-content;
+}
+
+.brand-mark__license--footer {
+  color: var(--gold-dark);
+  margin-left: 0.1rem;
 }
 
 .brand-logo--footer {
